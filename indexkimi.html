@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Столовая как дома</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+    <!-- Прелоадер -->
+    <div class="preloader" id="preloader">
+        <div class="preloader__content">
+            <div class="preloader__plate">
+                <i class="fa-solid fa-utensils"></i>
+            </div>
+            <div class="preloader__text">Столовая как дома</div>
+            <div class="preloader__bar">
+                <div class="preloader__progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Интерактивные частицы -->
+    <canvas class="particles-canvas" id="particles-canvas"></canvas>
+
+    <!-- Blob-морфинг фон -->
+    <div class="blob-bg" aria-hidden="true">
+        <div class="blob blob--1"></div>
+        <div class="blob blob--2"></div>
+        <div class="blob blob--3"></div>
+    </div>
+
+    <!-- Парящие декоративные иконки (только десктоп) -->
+    <div class="floating-icons" id="floating-icons" aria-hidden="true">
+        <i class="fa-solid fa-bowl-food floating-icons__item" style="--delay:0s;--x:5%;--duration:8s;"></i>
+        <i class="fa-solid fa-pizza-slice floating-icons__item" style="--delay:2s;--x:15%;--duration:10s;"></i>
+        <i class="fa-solid fa-burger floating-icons__item" style="--delay:4s;--x:25%;--duration:9s;"></i>
+        <i class="fa-solid fa-drumstick-bite floating-icons__item" style="--delay:1s;--x:75%;--duration:11s;"></i>
+        <i class="fa-solid fa-ice-cream floating-icons__item" style="--delay:3s;--x:85%;--duration:8s;"></i>
+        <i class="fa-solid fa-mug-hot floating-icons__item" style="--delay:5s;--x:95%;--duration:10s;"></i>
+    </div>
+
+    <!-- Плавающая кнопка звонка -->
+    <a href="tel:+79003030233" class="phone-fab" aria-label="Позвонить" title="Позвонить">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+
+    <header class="header" id="header">
+        <div class="header__container">
+            <a href="#" class="logo" data-page="home">
+                <div class="logo__icon-wrap">
+                    <i class="fa-solid fa-utensils logo__icon"></i>
+                    <div class="logo__icon-glow"></div>
+                </div>
+                <span class="logo__text">Столовая как дома</span>
+            </a>
+
+            <!-- Статус открыто/закрыто -->
+            <div class="status-badge" id="status-badge">
+                <span class="status-badge__dot"></span>
+                <span class="status-badge__text" id="status-text">Открыто</span>
+            </div>
+
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#" class="nav__link active" data-page="home"><span>Главная</span></a></li>
+                    <li class="nav__item"><a href="#" class="nav__link" data-page="menu"><span>Меню</span></a></li>
+                    <li class="nav__item"><a href="#" class="nav__link" data-page="services"><span>Услуги</span></a></li>
+                    <li class="nav__item"><a href="#" class="nav__link" data-page="contacts"><span>Контакты</span></a></li>
+                </ul>
+            </nav>
+            <button class="burger" aria-label="Меню">
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Главная -->
+        <section class="page page--home active" id="page-home">
+            <div class="hero">
+                <div class="hero__content">
+                    <h1 class="hero__title">
+                        <span class="hero__word">Домашняя</span>
+                        <span class="hero__word">еда</span>
+                        <br>
+                        <span class="hero__word hero__word--accent">с любовью</span>
+                    </h1>
+                    <p class="hero__subtitle">Вкусные обеды как у бабушки — сытно, недорого и с душой</p>
+                    <a href="#" class="btn btn--accent hero__btn" data-page="menu">
+                        <span>Посмотреть меню</span>
+                        <i class="fa-solid fa-arrow-right btn__arrow"></i>
+                    </a>
+                </div>
+                <div class="hero__food-animation" aria-hidden="true">
+                    <div class="hero__plate">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <div class="hero__orbit hero__orbit--1">
+                        <i class="fa-solid fa-burger hero__orbit-icon"></i>
+                    </div>
+                    <div class="hero__orbit hero__orbit--2">
+                        <i class="fa-solid fa-pizza-slice hero__orbit-icon"></i>
+                    </div>
+                    <div class="hero__orbit hero__orbit--3">
+                        <i class="fa-solid fa-bowl-food hero__orbit-icon"></i>
+                    </div>
+                    <div class="hero__orbit hero__orbit--4">
+                        <i class="fa-solid fa-ice-cream hero__orbit-icon"></i>
+                    </div>
+                    <div class="hero__orbit hero__orbit--5">
+                        <i class="fa-solid fa-drumstick-bite hero__orbit-icon"></i>
+                    </div>
+                    <div class="hero__orbit hero__orbit--6">
+                        <i class="fa-solid fa-mug-hot hero__orbit-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Горизонтальный скролл хитов -->
+            <section class="hits">
+                <h2 class="hits__title scroll-reveal">ПОПУЛЯРНЫЕ БЛЮДА</h2>
+                <div class="hits__scroll-container">
+                    <div class="hits__grid hits__grid--horizontal" id="hits-grid"></div>
+                </div>
+            </section>
+
+            <!-- Бегущая строка отзывов -->
+            <div class="ticker scroll-reveal">
+                <div class="ticker__track">
+                    <span class="ticker__item">⭐ "Лучший борщ в городе!" — Анна</span>
+                    <span class="ticker__item">⭐ "Как у бабушки, обожаю!" — Михаил</span>
+                    <span class="ticker__item">⭐ "Сытно, вкусно, недорого" — Ольга</span>
+                    <span class="ticker__item">⭐ "Шашлык просто огонь 🔥" — Дмитрий</span>
+                    <span class="ticker__item">⭐ "Хожу каждый день на обед" — Светлана</span>
+                    <span class="ticker__item">⭐ "Лучший борщ в городе!" — Анна</span>
+                    <span class="ticker__item">⭐ "Как у бабушки, обожаю!" — Михаил</span>
+                    <span class="ticker__item">⭐ "Сытно, вкусно, недорого" — Ольга</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Меню -->
+        <section class="page page--menu" id="page-menu">
+            <div class="catalog">
+                <h2 class="catalog__title scroll-reveal">НАШЕ МЕНЮ</h2>
+                <div class="filters scroll-reveal">
+                    <div class="filters__item">
+                        <label for="filter-search" class="filters__label">Поиск по названию</label>
+                        <input type="text" id="filter-search" class="filters__input" placeholder="Введите название...">
+                    </div>
+                    <div class="filters__item">
+                        <label for="filter-category" class="filters__label">Категория</label>
+                        <select id="filter-category" class="filters__select">
+                            <option value="all">Все категории</option>
+                            <option value="soups">Супы</option>
+                            <option value="garnishes">Гарниры</option>
+                            <option value="meat">Мясные блюда</option>
+                            <option value="salads">Салаты</option>
+                            <option value="drinks">Напитки</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Sticky категории -->
+                <div class="sticky-categories" id="sticky-categories">
+                    <button class="sticky-categories__btn active" data-cat="all">Все</button>
+                    <button class="sticky-categories__btn" data-cat="soups">Супы</button>
+                    <button class="sticky-categories__btn" data-cat="garnishes">Гарниры</button>
+                    <button class="sticky-categories__btn" data-cat="meat">Мясо</button>
+                    <button class="sticky-categories__btn" data-cat="salads">Салаты</button>
+                    <button class="sticky-categories__btn" data-cat="drinks">Напитки</button>
+                </div>
+
+                <div class="catalog__grid" id="menu-grid"></div>
+                <p class="catalog__empty" id="menu-empty" style="display:none;">Ничего не найдено</p>
+            </div>
+        </section>
+
+        <!-- Услуги -->
+        <section class="page page--services" id="page-services">
+            <div class="services">
+                <h2 class="services__title scroll-reveal">НАШИ УСЛУГИ</h2>
+                <div class="services__grid" id="services-grid"></div>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <section class="page page--contacts" id="page-contacts">
+            <div class="contacts">
+                <h2 class="contacts__title scroll-reveal">КОНТАКТЫ</h2>
+                <div class="contacts__info scroll-reveal">
+                    <div class="contacts__item">
+                        <div class="contacts__icon-wrap">
+                            <i class="fa-solid fa-phone contacts__icon"></i>
+                        </div>
+                        <a href="tel:+79003030233" class="contacts__link">+7 900 303 02 33</a>
+                    </div>
+                    <div class="contacts__item">
+                        <div class="contacts__icon-wrap">
+                            <i class="fa-solid fa-location-dot contacts__icon"></i>
+                        </div>
+                        <span class="contacts__text">ул. Генерала Лизюкова, 2</span>
+                    </div>
+                    <div class="contacts__item contacts__item--hours">
+                        <div class="contacts__icon-wrap">
+                            <i class="fa-solid fa-clock contacts__icon"></i>
+                        </div>
+                        <div class="contacts__hours">
+                            <span class="contacts__hours-label">Режим работы:</span>
+                            <span class="contacts__hours-time">Пн–Пт: 10:00 – 20:00</span>
+                            <span class="contacts__hours-time">Сб–Вс: 11:00 – 19:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карта -->
+                <div class="contacts__map-wrapper scroll-reveal">
+                    <div class="contacts__map-container">
+                        <iframe 
+                            class="contacts__map"
+                            src="https://yandex.ru/map-widget/v1/?ll=39.174829%2C51.707617&z=19&pt=39.174829%2C51.707617%2Cpm2rdm"
+                            frameborder="0"
+                            allowfullscreen="true"
+                            loading="lazy"
+                            title="Карта — Столовая как дома">
+                        </iframe>
+                    </div>
+                    <div class="contacts__map-badge">
+                        <i class="fa-solid fa-map-pin"></i>
+                        <span>Мы здесь!</span>
+                    </div>
+                </div>
+
+                <div class="contacts__socials scroll-reveal">
+                    <a href="#" class="contacts__social" target="_blank" rel="noopener" aria-label="Telegram">
+                        <i class="fa-brands fa-telegram-plane"></i>
+                    </a>
+                    <a href="#" class="contacts__social" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <span class="footer__text">Дата основания: 2024</span>
+            <div class="footer__icons">
+                <i class="fa-solid fa-star footer__icon footer__icon--star"></i>
+                <i class="fa-solid fa-heart footer__icon footer__icon--heart"></i>
+                <i class="fa-solid fa-thumbs-up footer__icon footer__icon--thumb"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
